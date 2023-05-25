@@ -386,6 +386,57 @@ weight_mass_conversion_dict = {
     "sun's mass": 1.989e30
 }
 
+power_conversion_dict = {
+    'watt (W)': 1,
+    'kilowatt (kW)': 1e3,
+    'megawatt (MW)': 1e6,
+    'gigawatt (GW)': 1e9,
+    'terawatt (TW)': 1e12,
+    'petawatt (PW)': 1e15,
+    'exawatt (EW)': 1e18,
+    'hectowatt (hW)': 1e2,
+    'dekawatt (daW)': 1e1,
+    'deciwatt (dW)': 1e-1,
+    'centiwatt (cW)': 1e-2,
+    'milliwatt (mW)': 1e-3,
+    'microwatt (μW)': 1e-6,
+    'nanowatt (nW)': 1e-9,
+    'picowatt (pW)': 1e-12,
+    'femtowatt (fW)': 1e-15,
+    'attowatt (aW)': 1e-18,
+    'horsepower (UK) [hp (UK)]': 745.7,
+    'horsepower [hp (550 ft*lbf/s)]': 745.699872,
+    'horsepower (metric) [hp (metric)]': 735.49875,
+    'horsepower (boiler) [hp (boiler)]': 9809.5,
+    'horsepower (electric) [hp (electric)]': 746,
+    'horsepower (water) [hp (water)]': 746.043,
+    'pferdestarke (ps)': 735.49875,
+    'Btu (IT)/hour [Btu/h]': 0.29307107,
+    'Btu (IT)/minute [Btu/min]': 17.584267,
+    'Btu (IT)/second [Btu/s]': 1055.05585,
+    'joule/second [J/s]': 1,
+    'kilovolt ampere [kV*A]': 1e3,
+    'volt ampere [V*A]': 1,
+    'newton meter/second': 1,
+    'kilocalorie (IT)/hour [kcal/h]': 1.163,
+    'kilocalorie (IT)/minute': 69.78,
+    'kilocalorie (IT)/second': 4184,
+    'foot pound-force/hour': 0.0003766161,
+    'foot pound-force/minute': 0.02259697,
+    'foot pound-force/second': 1.35582,
+    'erg/second [erg/s]': 1e-7,
+    'ton (refrigeration)': 3516.85,
+    'calorie (IT)/hour [cal/h]': 0.001163,
+    'calorie (IT)/minute [cal/min]': 0.06978,
+    'calorie (IT)/second [cal/s]': 4.184,
+    'MBtu (IT)/hour [Mbtu/h]': 293071.07,
+    'MBH': 293071.07,
+    'joule/hour [J/h]': 0.000277777778,
+    'joule/minute [J/min]': 0.0166666667,
+    'kilojoule/hour [kJ/h]': 0.277777778,
+    'kilojoule/minute [kJ/min]': 16.6666667
+}
+
 
 def convert_currency(amount, from_currency, to_currency):
     from_currency_code = from_currency
@@ -423,7 +474,7 @@ class UnitConverter:
         self.background_label = tk.Label(self.root, image=self.background_image)
         self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        welcome_label = ttk.Label(self.root, text="Welcome to the Unit Converter.", font=("Helvetica", 20))
+        welcome_label = ttk.Label(self.root, text="Welcome to the Unit Converter.", font=("Arial", 24, "bold"))
         welcome_label.grid(column=0, row=0, pady=10, padx=10)
 
         self.unit_categories = {
@@ -448,6 +499,31 @@ class UnitConverter:
                        "kilogram_force*millimeter", "gram_force*meter", "gram_force*centimeter",
                        "gram_force*millimeter",
                        "ounce_force*foot", "ounce_force*inch", "pound_force*foot", "pound_force*inch"],
+
+            "Power": ["watt (W)", "exawatt (EW)", "petawatt (PW)", "terawatt (TW)", "gigawatt (GW)", "megawatt (MW)",
+                      "kilowatt (kW)", "hectowatt (hW)", "dekawatt (daW)", "deciwatt (dW)", "centiwatt (cW)",
+                      "milliwatt (mW)",
+                      "microwatt (μW)", "nanowatt (nW)", "picowatt (pW)", "femtowatt (fW)", "attowatt (aW)",
+                      "horsepower (UK) [hp (UK)]", "horsepower [hp (550 ft*lbf/s)]",
+                      "horsepower (metric) [hp (metric)]",
+                      "horsepower (boiler) [hp (boiler)]", "horsepower (electric) [hp (electric)]",
+                      "horsepower (water) [hp (water)]", "pferdestarke (ps)", "Btu (IT)/hour [Btu/h]",
+                      "Btu (IT)/minute [Btu/min]", "Btu (IT)/second [Btu/s]", "Btu (th)/hour [Btu (th)/h]",
+                      "Btu (th)/second [Btu (th)/s]", "Btu (th)/minute", "MBtu (IT)/hour [MBtu/h]", "MBH",
+                      "ton (refrigeration)", "kilocalorie (IT)/hour [kcal/h]", "kilocalorie (IT)/minute",
+                      "kilocalorie (IT)/second", "kilocalorie (th)/hour", "kilocalorie (th)/minute",
+                      "kilocalorie (th)/second", "calorie (IT)/hour [cal/h]", "calorie (IT)/minute [cal/min]",
+                      "calorie (IT)/second [cal/s]", "calorie (th)/hour [cal (th)/h]", "calorie (th)/minute",
+                      "calorie (th)/second", "foot pound-force/hour", "foot pound-force/minute",
+                      "foot pound-force/second", "pound-foot/hour [lbf*ft/h]", "pound-foot/minute", "pound-foot/second",
+                      "erg/second [erg/s]", "kilovolt ampere [kV*A]", "volt ampere [V*A]", "newton meter/second",
+                      "joule/second [J/s]", "exajoule/second [EJ/s]", "petajoule/second [PJ/s]",
+                      "terajoule/second [TJ/s]", "gigajoule/second [GJ/s]", "megajoule/second [MJ/s]",
+                      "kilojoule/second [kJ/s]", "hectojoule/second [hJ/s]", "dekajoule/second [daJ/s]",
+                      "decijoule/second [dJ/s]", "centijoule/second [cJ/s]", "millijoule/second [mJ/s]",
+                      "microjoule/second [μJ/s]", "nanojoule/second [nJ/s]", "picojoule/second [pJ/s]",
+                      "femtojoule/second [fJ/s]", "attojoule/second [aJ/s]", "joule/hour [J/h]", "joule/minute [J/min]",
+                      "kilojoule/hour [kJ/h]", "kilojoule/minute [kJ/min]"],
 
             "Currency": [
                 "USD - United States Dollar",
@@ -737,6 +813,9 @@ class UnitConverter:
                     converted_value = float(from_value) * conversion_factor
                 elif self.category_var.get() == "Weight and Mass":
                     conversion_factor = weight_mass_conversion_dict[from_unit] / weight_mass_conversion_dict[to_unit]
+                    converted_value = float(from_value) * conversion_factor
+                elif from_unit in power_conversion_dict and to_unit in power_conversion_dict:
+                    conversion_factor = power_conversion_dict[from_unit] / power_conversion_dict[to_unit]
                     converted_value = float(from_value) * conversion_factor
                 elif from_unit in energy_conversion_dict and to_unit in energy_conversion_dict:
                     conversion_factor = energy_conversion_dict[from_unit] / energy_conversion_dict[to_unit]
