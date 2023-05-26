@@ -802,6 +802,8 @@ class UnitConverter:
                     else:
                         converted_value = (from_value * self.ureg(from_unit)).to(to_unit).magnitude
                 elif self.category_var.get() == "Numbers":
+
+
                     base_from = number_conversion_dict[from_unit]
                     base_to = number_conversion_dict[to_unit]
                     converted_value = self.baseconvert(from_value, base_from, base_to)
